@@ -4,7 +4,7 @@
 
 - [CMake](https://cmake.org/)
 - [Emscripten](https://emscripten.org/docs/getting_started/downloads.html)
-- [Node.js](https://nodejs.org/en/download/)
+- [Python](https://www.python.org/downloads/)
 
 ## Building
 
@@ -15,5 +15,5 @@ emcc hello.c -o hello.html
 ## Running
 
 ```bash
-node server.js
+python -m http.server
 ```
