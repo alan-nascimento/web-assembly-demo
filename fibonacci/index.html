@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Performance Comparison</title>
+  </head>
+  <body>
+    <script src="fibonacci.js"></script>
+
+    <script>
+      const N = 1000;
+
+      // ----------------------------
+      // JavaScript
+      // ----------------------------
+
+      console.time('JavaScript (No WebAssembly)');
+
+      const resultJS = fibonacciJS(N);
+
+      console.timeEnd('JavaScript (No WebAssembly)');
+      console.log('Result (JavaScript):', resultJS);
+
+      // ----------------------------
+      // C + WebAssembly
+      // ----------------------------
+
+      var Module = {
+        onRuntimeInitialized: function () {
+          // Call the Fibonacci function from the WebAssembly module
+          console.time('C (WebAssembly)');
+
+          const fibonacciC = Module.cwrap('fibonacciC', 'number', ['number']);
+          const resultC = fibonacciC(N);
+
+          console.timeEnd('C (WebAssembly)');
+          console.log('Result (C/WebAssembly):', resultC);
+
+          // emcc fibonacci.c -o fibonacci.c.js -s EXPORTED_FUNCTIONS="['_fibonacciC']" -s EXPORTED_RUNTIME_METHODS='["ccall", "cwrap"]' -O2
+
+          // Display the result on the web page
+          // var outputDiv = document.getElementById('output');
+          // outputDiv.textContent = 'Fibonacci sequence up to ' + n + ': ' + result;
+        },
+      };
+
+      // var Module = {
+      //   onRuntimeInitialized: function () {
+      //     console.time('C (WebAssembly)');
+
+      //     const sumOfIntegersC = Module.cwrap('sumOfIntegersC', 'number', ['number']);
+      //     const resultC = sumOfIntegersC(N);
+
+      //     console.timeEnd('C (WebAssembly)');
+      //     console.log('Result (C/WebAssembly):', resultC);
+      //   },
+      // };
+    </script>
+
+    <!-- Emscripten generated code, available after running its command -->
+    <script src="fibonacci.c.js"></script>
+  </body>
+</html>
