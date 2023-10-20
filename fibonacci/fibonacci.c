@@ -1,22 +1,13 @@
-int fibonacciC(int n)
-{
-  if (n <= 0)
-  {
-    return 0;
-  }
-  else if (n == 1)
-  {
-    return 1;
-  }
-  else
-  {
-    int a = 0, b = 1, fib;
-    for (int i = 2; i <= n; i++)
-    {
-      fib = a + b;
-      a = b;
-      b = fib;
-    }
-    return fib;
+/**
+ * @brief Calculates the Fibonacci sequence using recursion
+ *
+ * @param n The index of the Fibonacci number to calculate
+ * @return N-th Fibonacci number
+ */
+int fibonacciC(int n) {
+  if (n <= 1) {
+    return n;
+  } else {
+    return fibonacciC(n - 1) + fibonacciC(n - 2);
   }
 }
