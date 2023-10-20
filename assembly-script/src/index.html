@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      // Fetch WebAssembly binary
+      const wasm = fetch('../build/release.wasm');
+
+      // Instantiate WebAssembly module
+      WebAssembly.instantiateStreaming(wasm)
+        .then(({ instance }) => {
+          document.body.innerText = instance.exports.add(1, 2);
+        });
+    </script>
+  </head>
+  <body />
+</html>
