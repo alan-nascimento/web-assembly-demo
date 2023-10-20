@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <script type="module">
-      const wasm = await fetch('build/release.wasm');
-      const { instance } = await WebAssembly.instantiateStreaming(wasm);
-      document.body.innerText = instance.exports.add(2, 2);
+    <script>
+      WebAssembly.instantiateStreaming(fetch('build/module.wasm'))
+        .then((module) => {
+          const { sum } = module.instance.exports;
+          document.body.innerText = sum(1, 2);
+        })
+        .catch(console.error);
     </script>
   </head>
   <body />
