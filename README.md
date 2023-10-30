@@ -1,6 +1,6 @@
 # Introduction to WebAssembly
 
-WebAssembly introduction for the PayPal Web Conference 2023.
+Demo for the PayPal's Web Conference 2023.
 
 WebAssembly is a binary instruction format designed for safe and efficient execution in web browsers, allowing developers to run high-performance, low-level code in web applications, enabling near-native speed and access to many programming languages.
 
