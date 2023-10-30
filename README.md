@@ -1,15 +1,6 @@
-# Introduction to Web Assembly
+# Introduction to WebAssembly - PayPal Web Conference 2023
 
-1. Introduction
-2. The Problem
-3. Web Assembly
-4. WAT and WASM
-5. C Hello World!
-6. C to WAT
-7. WAT to WASM
-8. WASM to WAT
-9. Performance Comparison: JavaScript vs WASM
-  1. JavaScript wins
-  2. Dramatic
-  3. C compilation optimization
-  4. C wins
+WebAssembly is a binary instruction format designed for safe and efficient execution in web browsers, allowing developers to run high-performance, low-level code in web applications, enabling near-native speed and access to many programming languages.
+
+This repository includes the code examples used in the presentation.
+Verify the `assembly-script` and `fibonacci` directories for further implementation details.
