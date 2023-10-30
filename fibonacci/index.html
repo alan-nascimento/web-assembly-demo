@@ -1,41 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <title>Performance Comparison</title>
+    <title>Performance</title>
   </head>
   <body>
     <script src="fibonacci.js"></script>
     <script>
-      const N = 45;
-
       // ----------------------------------------
       // JavaScript
       // ----------------------------------------
 
-      console.time('JavaScript');
+      Math.fibonacciJS = function (n) {
+        console.time('JS');
 
-      const resultJS = fibonacciJS(N);
+        const resultJS = fibonacciJS(n);
 
-      console.timeEnd('JavaScript');
-      console.log(resultJS);
+        console.timeEnd('JS');
+        console.log(resultJS);
+      };
+    </script>
 
+    <script src="fibonacci.c.js"></script>
+    <script>
       // ----------------------------------------
       // C
       // ----------------------------------------
 
-      var Module = {
-        onRuntimeInitialized: function () {
+      Module.onRuntimeInitialized = function () {
+        Math.fibonacciC = function (n) {
           console.time('C');
 
           const fibonacciC = Module.cwrap('fibonacciC', 'number', ['number']);
-          const resultC = fibonacciC(N);
+          const resultC = fibonacciC(n);
 
           console.timeEnd('C');
           console.log(resultC);
-        },
+        };
       };
     </script>
-    <script src="fibonacci.c.js"></script>
   </body>
 </html>
